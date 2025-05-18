@@ -18,16 +18,12 @@ def load_custom_recognizers_from_yaml(path: str, detected_lang: str):
         data = yaml.safe_load(f)
 
     for entry in data.get("recognizers", []):
-        lang = entry.get("language", "en")
-        if lang != detected_lang:
-            continue
-
         pattern = Pattern(entry["name"], entry["pattern"], float(entry.get("score", 0.5)))
         recognizer = PatternRecognizer(
             supported_entity=entry["entity_type"],
             name=entry["name"],
             patterns=[pattern],
-            supported_language=lang
+            supported_language=detected_lang
         )
         recognizers.append(recognizer)
 
