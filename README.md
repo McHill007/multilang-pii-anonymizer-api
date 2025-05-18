@@ -54,12 +54,12 @@ Content-Type: application/json
 ---
 
 ## 🛠️ Run with Docker
-
+```bash
 docker build -t pii-anonymizer-api .  
 docker run -p 5000:5000 pii-anonymizer-api
-
+```
 ### Or with Docker Compose
-
+```yaml
 services:  
   pii-anonymizer-api:  
     build:  
@@ -67,7 +67,7 @@ services:
     ports:  
       - "5000:5000"  
     restart: unless-stopped
-
+```
 ---
 
 ## 🐳 Use Prebuilt Docker Image
@@ -101,7 +101,7 @@ This will start the API at `http://localhost:5000/anonymize` without requiring y
 ---
 
 ## 📁 Project Structure
-
+````bash
 .
 ├── app.py                  - Flask API  
 ├── pii_anonymizer.py       - PII processing logic using Presidio  
@@ -110,7 +110,7 @@ This will start the API at `http://localhost:5000/anonymize` without requiring y
 ├── Dockerfile  
 ├── requirements.txt  
 └── README.md
-
+````
 ---
 
 ## 📄 License
