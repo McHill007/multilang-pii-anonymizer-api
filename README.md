@@ -113,6 +113,39 @@ This will start the API at `http://localhost:5000/anonymize` without requiring y
 ````
 ---
 
+## 🔧 Custom Regex Recognizers via `recognizers.yaml`
+
+You can define your own PII patterns (e.g., order numbers, internal IDs) using a simple YAML file.  
+This allows you to extend or replace recognizers without modifying any code.
+
+### Example: `recognizers.yaml`
+
+```yaml  
+-   name: AmazonOrderRecognizer  
+    entity_type: AMAZON_ORDER  
+    language: de  
+    pattern: "\(?\d{3}-\d{7}-\d{7}\)?"  
+    score: 1.0
+```    
+
+### How it's done
+
+The app will automatically load this file at runtime and register the recognizers dynamically based on the detected language of each request.
+
+Place the file in the root directory (or configure the path in your code):
+
+```python
+for recognizer in load_custom_recognizers_from_yaml("recognizers.yaml", detected_lang):  
+	analyzer.registry.add_recognizer(recognizer)
+```
+This allows you to:
+
+-   Keep sensitive patterns out of source code
+-   Maintain environment-specific recognizers (e.g., dev vs. prod)    
+-   Easily extend functionality without redeploying
+
+---
+
 ## 📄 License
 
 This project is licensed under the Apache 2.0 License.  
