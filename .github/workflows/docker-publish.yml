@@ -3,17 +3,6 @@ name: Build and Push Docker Image
 on:
   workflow_dispatch:
 
-
-#on:
-  #push:
-    #branches:
-      #- main
-    #paths:
-      #- '**.py'
-      #- 'Dockerfile'
-      #- 'requirements.txt'
-      -# 'analyzer_config.yml'
-
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
