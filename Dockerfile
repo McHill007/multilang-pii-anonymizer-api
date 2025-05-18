@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY app.py pii_anonymizer.py language_detection.py analyzer_config.yml requirements.txt ./
 
-RUN pip install --no-cache-dir flask presidio-analyzer presidio-anonymizer spacy-langdetect && \
+RUN pip install --no-cache-dir -r requirements.txt && \
     python -m spacy download en_core_web_lg && \
     python -m spacy download nb_core_news_lg && \
     python -m spacy download es_core_news_lg && \
