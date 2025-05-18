@@ -103,7 +103,6 @@ This allows you to extend or replace recognizers without modifying any code.
 ```yaml  
 -   name: AmazonOrderRecognizer  
     entity_type: AMAZON_ORDER  
-    language: de  
     pattern: "\(?\d{3}-\d{7}-\d{7}\)?"  
     score: 1.0
 ```    
