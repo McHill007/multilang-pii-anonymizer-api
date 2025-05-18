@@ -64,11 +64,15 @@ class PiiAnonymizer:
             "EMAIL_ADDRESS": OperatorConfig("replace", {"new_value": "<EMAIL_ADDRESS>"}),
             "PHONE_NUMBER": OperatorConfig("replace", {"new_value": "<PHONE_NUMBER>"}),
             "CREDIT_CARD": OperatorConfig("replace", {"new_value": "<CREDIT_CARD>"}),
-            "AMAZON_ORDER": OperatorConfig("replace", {"new_value": "<AMAZON_BESTELLNUMMER>"}),
-            "SHOP_ORDER": OperatorConfig("replace", {"new_value": "<SHOP_BESTELLNUMMER>"}),
             "DEFAULT": OperatorConfig("replace", {"new_value": "<REDACTED>"})
         }
 
+        for r in load_custom_recognizers_from_yaml("recognizers.yaml", detected_lang):
+            entity = r.supported_entities[0]
+            if entity not in operator_config:
+                operator_config[entity] = OperatorConfig("replace", {"new_value": f"<{entity}>"})
+            analyzer.registry.add_recognizer(r)
+        
         anonymized_result = anonymizer.anonymize(text, analyzer_results, operators=operator_config)
 
         for entity, anonymized in zip(replaced_entities, anonymized_result.items):
