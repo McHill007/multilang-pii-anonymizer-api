@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify
 from pii_anonymizer import PiiAnonymizer
 
@@ -21,8 +20,9 @@ def anonymize():
         if not text:
             return jsonify({"error": "Text is required"}), 400
 
-        from pii_anonymizer import PiiAnonymizer
-        original, anonymized, lang, entities = PiiAnonymizer.anonymize(text)
+        debug = request.args.get("debug", "false").lower() == "true"
+
+        original, anonymized, lang, entities = PiiAnonymizer.anonymize(text, debug=debug)
 
         return jsonify({
             "language": lang,
