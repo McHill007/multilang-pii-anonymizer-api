@@ -12,4 +12,5 @@ RUN pip install --no-cache-dir flask presidio-analyzer presidio-anonymizer spacy
     python -m spacy download de_core_news_lg && \
     python -m spacy download it_core_news_lg
 
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:5000", "app:app"]
+
