@@ -3,7 +3,7 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY . .
+COPY app.py pii_anonymizer.py language_detection.py analyzer_config.yml requirements.txt ./
 
 RUN pip install --no-cache-dir flask presidio-analyzer presidio-anonymizer spacy-langdetect && \
     python -m spacy download en_core_web_lg && \
