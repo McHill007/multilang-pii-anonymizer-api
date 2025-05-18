@@ -93,29 +93,6 @@ services:
 ```
 This will start the API at `http://localhost:5000/anonymize` without requiring you to build the image locally.
 
-## 🧠 Tech Stack
-
-- Python 3.10
-- Flask
-- Microsoft Presidio (presidio-analyzer, presidio-anonymizer)
-- spaCy + spacy-langdetect
-- Docker
-
----
-
-## 📁 Project Structure
-````bash
-.
-├── app.py                  - Flask API  
-├── pii_anonymizer.py       - PII processing logic using Presidio  
-├── language_detection.py   - spaCy-based language detection  
-├── analyzer_config.yml     - Presidio configuration for models/recognizers  
-├── Dockerfile  
-├── requirements.txt  
-└── README.md
-````
----
-
 ## 🔧 Custom Regex Recognizers via `recognizers.yaml`
 
 You can define your own PII patterns (e.g., order numbers, internal IDs) using a simple YAML file.  
@@ -148,6 +125,30 @@ This allows you to:
 -   Easily extend functionality without redeploying
 
 ---
+
+## 🧠 Tech Stack
+
+- Python 3.12
+- Flask
+- Microsoft Presidio (presidio-analyzer, presidio-anonymizer)
+- spaCy + spacy-langdetect
+- Docker
+
+---
+
+## 📁 Project Structure
+````bash
+.
+├── app.py                  - Flask API  
+├── pii_anonymizer.py       - PII processing logic using Presidio  
+├── language_detection.py   - spaCy-based language detection  
+├── analyzer_config.yml     - Presidio configuration for models/recognizers  
+├── Dockerfile  
+├── requirements.txt  
+└── README.md
+````
+---
+
 
 ## 📄 License
 
