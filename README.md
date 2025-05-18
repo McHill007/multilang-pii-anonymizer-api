@@ -70,6 +70,26 @@ services:
 
 ---
 
+## 🐳 Use Prebuilt Docker Image
+
+You can also run the PII Anonymizer API directly using the prebuilt image from Docker Hub:
+
+```bash
+`docker pull mchill007/pii-anonymizer-api` 
+```
+### Example `docker-compose.yml`
+
+```yaml
+services:
+  pii-anonymizer-api:
+    image: mchill007/pii-anonymizer-api:latest
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+ 
+```
+This will start the API at `http://localhost:5000/anonymize` without requiring you to build the image locally.
+
 ## 🧠 Tech Stack
 
 - Python 3.10
