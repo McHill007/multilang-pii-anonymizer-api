@@ -66,6 +66,9 @@ services:
       context: .  
     ports:  
       - "5000:5000"  
+    #Optional load custom recognizers
+    #volumes:
+    #  - ./recognizers.yaml:/app/recognizers.yaml:ro
     restart: unless-stopped
 ```
 ---
@@ -75,7 +78,7 @@ services:
 You can also run the PII Anonymizer API directly using the prebuilt image from Docker Hub:
 
 ```bash
-`docker pull mchill007/pii-anonymizer-api` 
+docker pull mchill007/pii-anonymizer-api
 ```
 ### Example `docker-compose.yml`
 
