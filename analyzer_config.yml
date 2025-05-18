@@ -1,0 +1,31 @@
+
+supported_languages:
+  - en
+  - no
+  - es
+  - de
+  - it
+default_score_threshold: 0.4
+
+nlp_configuration:
+  nlp_engine_name: spacy
+  models:
+    - lang_code: en
+      model_name: en_core_web_lg
+    - lang_code: no
+      model_name: nb_core_news_lg
+    - lang_code: es
+      model_name: es_core_news_lg
+    - lang_code: de
+      model_name: de_core_news_lg
+    - lang_code: it
+      model_name: it_core_news_lg
+
+recognizer_registry:
+  recognizers:
+    - name: EmailRecognizer
+      type: predefined
+    - name: PhoneRecognizer
+      type: predefined
+    - name: CreditCardRecognizer
+      type: predefined
